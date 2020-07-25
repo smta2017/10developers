@@ -1,11 +1,4 @@
 <?php
-/**
- * ten_developers functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package ten_developers
- */
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
@@ -50,7 +43,10 @@ if ( ! function_exists( 'ten_developers_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'ten_developers' ),
+				'primary'  => __( 'Desktop Horizontal Menu', 'twentytwenty' ),
+				'secondry' => __( 'Desktop Expanded Menu', 'twentytwenty' ),
+				 
+				// 'menu-3' => esc_html__( 'Footer', 'ten_developers' ),
 			)
 		);
 
@@ -144,9 +140,32 @@ add_action( 'widgets_init', 'ten_developers_widgets_init' );
  */
 function ten_developers_scripts() {
 	wp_enqueue_style( 'ten_developers-style', get_stylesheet_uri(), array(), _S_VERSION );
+	
+	wp_enqueue_style( 'ten_dev1', get_template_directory_uri().'/assets/vendor/bootstrap/css/bootstrap.min.css',array(),'1.0.0','all');
+	wp_enqueue_style( 'ten_dev2', get_template_directory_uri().'/assets/vendor/icofont/icofont.min.css',array(),'1.0.0','all');
+	wp_enqueue_style( 'ten_dev3', get_template_directory_uri().'/assets/vendor/boxicons/css/boxicons.min.css',array(),'1.0.0','all');
+	wp_enqueue_style( 'ten_dev4', get_template_directory_uri().'/assets/vendor/animate.css/animate.min.css',array(),'1.0.0','all');
+	wp_enqueue_style( 'ten_dev5', get_template_directory_uri().'/assets/vendor/remixicon/remixicon.css',array(),'1.0.0','all');
+	wp_enqueue_style( 'ten_dev6', get_template_directory_uri().'/assets/vendor/line-awesome/css/line-awesome.min.css',array(),'1.0.0','all');
+	wp_enqueue_style( 'ten_dev7', get_template_directory_uri().'/assets/vendor/venobox/venobox.css',array(),'1.0.0','all');
+	wp_enqueue_style( 'ten_dev8', get_template_directory_uri().'/assets/vendor/owl.carousel/assets/owl.carousel.min.css',array(),'1.0.0','all');
+	wp_enqueue_style( 'ten_dev9', get_template_directory_uri().'/assets/vendor/aos/aos.css',array(),'1.0.0','all');
+
+	wp_enqueue_style( 'ten_dev10', get_template_directory_uri().'/assets/css/style.css',array(),'1.0.0','all');
+
 	wp_style_add_data( 'ten_developers-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'ten_developers-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'ten_developers-navigation2', get_template_directory_uri() . '/assets/vendor/jquery/jquery.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'ten_developers-navigation3', get_template_directory_uri() . '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'ten_developers-navigation4', get_template_directory_uri() . '/assets/vendor/jquery.easing/jquery.easing.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'ten_developers-navigation5', get_template_directory_uri() . '/assets/vendor/php-email-form/validate.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'ten_developers-navigation6', get_template_directory_uri() . '/assets/vendor/isotope-layout/isotope.pkgd.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'ten_developers-navigation7', get_template_directory_uri() . '/assets/vendor/venobox/venobox.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'ten_developers-navigation8', get_template_directory_uri() . '/assets/vendor/owl.carousel/owl.carousel.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'ten_developers-navigation9', get_template_directory_uri() . '/assets/vendor/aos/aos.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'ten_developers-navigation10', get_template_directory_uri() . '/assets/js/main.js', array(), _S_VERSION, true );
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -181,3 +200,26 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// ======================================================================================
+
+
+function wp_nav_menu_no_ul($theme_location)
+{
+    $options = array(
+        'echo' => false,
+        'container' => false,
+        'theme_location' => $theme_location,
+        'fallback_cb'=> 'default_page_menu'
+    );
+
+    $menu = wp_nav_menu($options);
+    echo preg_replace(array(
+        '#^<ul[^>]*>#',
+        '#</ul>$#'
+    ), '', $menu);
+}
+
+function default_page_menu() {
+	wp_list_pages('title_li=');
+ } 
+ 

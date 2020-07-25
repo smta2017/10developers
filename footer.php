@@ -1,34 +1,30 @@
-<?php
-/**
- * The template for displaying the footer
- *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package ten_developers
- */
+ <!-- ======= Footer ======= -->
+ <footer id="footer">
+ 	<div class="container">
+ 		<h3><span style="color:#ef6603">10</span>Developers</h3>
+ 		<p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+ 		<div class="social-links">
+ 			<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+ 			<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+ 			<a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+ 			<a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+ 			<a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+ 		</div>
+ 		<div class="copyright">
+ 			&copy; Copyright <strong><span style="color:#ef6603">10</span>Developers</strong>. All Rights Reserved
+ 		</div>
+ 		<div class="credits">
+ 			Designed by <a href="#"><span style="color:#ef6603">10</span>Developers Team</a>
+ 		</div>
+ 	</div>
+ </footer><!-- End Footer -->
 
-?>
+ <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+ <?php wp_head(); ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'ten_developers' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'ten_developers' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'ten_developers' ), 'ten_developers', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
 
-<?php wp_footer(); ?>
+ <?php wp_footer(); ?>
 
-</body>
-</html>
+ </body>
+
+ </html>
